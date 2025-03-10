@@ -1,30 +1,37 @@
 import { HERO_CONTENT } from "../constants";
-import profilePic from "../assets/kevinRushProfile.png";
+import profilePic from "../assets/mePhoto.jpg";
 
 const Hero = () => {
   return (
-    <div className=" border-neutral-900 pb-4 lg:mb-35">
-      <div className="flex flex-wrap">
-         <div className="w-full lg:w-1/2">
-         <div className="flex flex-col items-center lg:items-start">
-            <h1 className="pb-16 text-6xl font-thin tracking-tight lg:mt-16 lg:text-8xl">
-               Kevin Rush
-            </h1>
-         <span className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500
-         bg-clip-text text-4xl tracking-tight text-transparent">
-            Full Stack Developer
-         </span>
-         <p className="my-2 max-w-xl py-6 font-light tracking-tighter">{HERO_CONTENT}</p>
-         </div>
-         </div>
-         <div className="w-full lg:w-1/2 lg:p-8">
-         <div className="flex justify-center">
-            <img src={profilePic} alt="taqwa" />
-         </div>
-         </div>
+    <section className="flex flex-col-reverse lg:flex-row items-center justify-between py-16 px-8">
+      {/* Left Content */}
+      <div className="text-center lg:text-left lg:w-1/2">
+        <h1 className="text-5xl lg:text-7xl font-bold text-neutral-100">
+          Mukmin Littaqwa
+        </h1>
+        <p className="mt-4 text-xl font-medium text-cyan-400">
+          Software Engineer
+        </p>
+        <p className="mt-6 max-w-xl text-neutral-400">{HERO_CONTENT}</p>
+        
+        {/* CTA Button */}
+        <div className="mt-8">
+          <button className="bg-cyan-500 text-white font-medium py-3 px-6 rounded-lg shadow-md hover:bg-cyan-600 transition">
+            View My Work
+          </button>
+        </div>
       </div>
-    </div>
-  )
-}
 
-export default Hero
+      {/* Right Content - Profile Image */}
+      <div className="mb-10 lg:mb-0 lg:w-1/2 flex justify-center">
+        <img
+          src={profilePic}
+          alt="Kevin Rush"
+          className="w-48 h-48 lg:w-150 lg:h-150 object-cover rounded-full border-4 border-neutral-800 shadow-lg"
+        />
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

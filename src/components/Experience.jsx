@@ -1,35 +1,63 @@
-import { EXPERIENCES } from "../constants"
+import { EXPERIENCES } from "../constants";
+
 const Experience = () => {
   return (
-    <div className="pb-4">
-      <h1 className="my-20 text-center text-4xl">Experience</h1>
-      <div>
-         {EXPERIENCES.map((experience,index) => (
-            <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
-               <div className="w-full lg:w-1/4">
-               <p className="mb-2 text-neutral-500">{experience.year}</p>
-               </div>
+    <div className="pb-16 px-6">
+      <h1 className="my-12 text-center text-4xl font-bold text-white neon-text">
+        Experience
+      </h1>
 
-               <div className="w-full max-w-xl lg:w-3/4">
-               <h6 className="mb-2 font-semibold">
-                  {experience.role}-{" "}
-                  <span className="text-sm text-purple-100">
-                     {experience.company}
+      <div className="relative mx-auto max-w-4xl border-l-2 border-neutral-800 pl-6">
+        {EXPERIENCES.map((experience, index) => (
+          <div 
+            key={index} 
+            className="mb-8 relative group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+          >
+            {/* Dot indicator */}
+            <div className="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-purple-500 border-4 border-neutral-900 group-hover:scale-125 transition-all"></div>
+
+            <div className="bg-neutral-900/60 p-6 rounded-lg shadow-md border border-neutral-800 backdrop-blur-md">
+              <p className="text-sm text-neutral-400">{experience.year}</p>
+              <h6 className="mt-2 text-lg font-semibold text-white">
+                {experience.role} -{" "}
+                <span className="text-purple-300 text-base">{experience.company}</span>
+              </h6>
+              <p className="mt-2 text-sm text-neutral-300">{experience.description}</p>
+              
+              <div className="flex flex-wrap gap-2 mt-4">
+                {experience.technologies.map((tech, index) => (
+                  <span 
+                    key={index} 
+                    className="rounded-full bg-purple-500/20 px-4 py-1 text-xs font-medium text-purple-400 shadow-sm"
+                  >
+                    {tech}
                   </span>
-               </h6>
-               <p className="mb-4 text-neutral-400">{experience.description}</p>
-               {experience.technologies.map((tech,index) => (
-                  <span key={index} className="mr-2 mt-4 rounder bg-neutral-900
-                  px-9 py-1 text-sm font-medium text-purple-400">
-                     {tech}
-                  </span>
-               ))}
-               </div>
+                ))}
+              </div>
             </div>
-         ))}
+          </div>
+        ))}
       </div>
-    </div>
-  )
-}
 
-export default Experience
+      <style>
+        {`
+          .neon-text {
+            text-shadow: 0 0 10px #fff, 0 0 20px #9a4eff, 0 0 30px #9a4eff;
+            animation: neon-flicker 1.5s infinite alternate;
+          }
+
+          @keyframes neon-flicker {
+            0%, 100% {
+              text-shadow: 0 0 5px #fff, 0 0 10px #9a4eff;
+            }
+            50% {
+              text-shadow: 0 0 2px #fff, 0 0 5px #9a4eff;
+            }
+          }
+        `}
+      </style>
+    </div>
+  );
+};
+
+export default Experience;
